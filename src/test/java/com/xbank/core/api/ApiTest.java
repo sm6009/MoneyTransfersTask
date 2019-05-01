@@ -95,7 +95,6 @@ public class ApiTest extends JerseyTest {
         //submit multiple requests of A->B and B<-A transfers that should sum up to the original balance
         for (int i = 0; i < nrOfThreads; i++) {
             WORKER_THREAD_POOL.submit(() -> {
-                System.out.println("submitted ");
                 TransferDto transfer = new TransferDto(123,124,new BigDecimal(1),
                         Currency.getInstance("EUR"), "test");
                 Response output = target("/transfer").request().post(Entity.entity(transfer, MediaType.APPLICATION_JSON_TYPE));
